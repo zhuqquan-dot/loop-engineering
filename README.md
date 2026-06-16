@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/badge/version-2.2-blue.svg)](./CHANGELOG.md)
 [![Cross-agent](https://img.shields.io/badge/agents-Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20Trae-informational)](./adapters/)
 [![Status](https://img.shields.io/badge/status-methodology--repo-success.svg)](#project-status)
+[![GitHub stars](https://img.shields.io/github/stars/zhuqquan-dot/loop-engineering?style=social)](https://github.com/zhuqquan-dot/loop-engineering/stargazers)
 
 A complete Loop Engineering methodology package for people who want to make AI agents run repeatable work with structure, skepticism, and brakes.
 
