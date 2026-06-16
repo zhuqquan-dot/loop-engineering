@@ -309,14 +309,6 @@ This repository keeps the complete methodology by design.
 
 It does not simplify itself for broad popularity. Open source does not require minimalism. It requires clarity, boundaries, and truthful claims. This package is intentionally complete so that suitable users can adopt it as a real operating discipline.
 
-## Suggested open-source positioning
-
-If you publish this on GitHub, position it as:
-
-> A full Loop Engineering methodology for cross-agent AI work: design the loop, separate generation from evaluation, preserve state outside chat, and keep humans in control of external action.
-
-That is a more truthful framing than calling it a universal automation framework.
-
 ## License and attribution
 
 Author: **zhuquan**
