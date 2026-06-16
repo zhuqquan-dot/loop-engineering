@@ -311,7 +311,7 @@ It does not simplify itself for broad popularity. Open source does not require m
 
 ## License and attribution
 
-Author: **zhuquan**
+Author: [zhuquan](https://x.com/Jameszh76003787)
 
 Released under the [MIT License](./LICENSE).
 
