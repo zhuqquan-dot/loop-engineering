@@ -1,0 +1,51 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs / build artifacts
+*.log
+dist/
+build/
+out/
+
+# Local agent / runtime state (do not commit private operational state)
+.claude/
+.codex/
+.cursor/
+.cursorrules.local
+.trae/
+
+# Ignore runtime state at the repo root only — not the template/example state files,
+# which ARE part of this methodology repository.
+/state/
+*.local.md
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem

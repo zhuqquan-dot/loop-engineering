@@ -1,0 +1,67 @@
+name: install-smoke-test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  bash-installer:
+    name: bash installer (dry-run on every target)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x ./install.sh ./uninstall.sh
+
+      - name: Show help
+        run: ./install.sh --help
+
+      - name: Dry-run claude-code (global)
+        run: ./install.sh claude-code --scope global --with-rules --dry-run
+
+      - name: Dry-run claude-code (project)
+        run: ./install.sh claude-code --scope project --project-dir "$RUNNER_TEMP/proj-cc" --with-state --with-rules --dry-run
+
+      - name: Dry-run codex (global)
+        run: ./install.sh codex --scope global --with-rules --dry-run
+
+      - name: Dry-run codex (project)
+        run: ./install.sh codex --scope project --project-dir "$RUNNER_TEMP/proj-codex" --with-state --with-rules --dry-run
+
+      - name: Dry-run cursor (project only)
+        run: ./install.sh cursor --project-dir "$RUNNER_TEMP/proj-cursor" --with-rules --with-state --dry-run
+
+      - name: Dry-run trae (global)
+        run: ./install.sh trae --scope global --dry-run
+
+      - name: Cursor must reject global scope
+        run: |
+          if ./install.sh cursor --scope global --dry-run; then
+            echo "expected non-zero exit when cursor + global"
+            exit 1
+          fi
+
+  powershell-installer:
+    name: powershell installer (dry-run on every target)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dry-run claude-code (global)
+        shell: pwsh
+        run: ./install.ps1 -Target claude-code -Scope global -WithRules -DryRun
+
+      - name: Dry-run codex (project)
+        shell: pwsh
+        run: ./install.ps1 -Target codex -Scope project -ProjectDir "$env:RUNNER_TEMP\proj-codex" -WithState -WithRules -DryRun
+
+      - name: Dry-run cursor (project)
+        shell: pwsh
+        run: ./install.ps1 -Target cursor -ProjectDir "$env:RUNNER_TEMP\proj-cursor" -WithRules -WithState -DryRun
+
+      - name: Dry-run trae (global)
+        shell: pwsh
+        run: ./install.ps1 -Target trae -Scope global -DryRun

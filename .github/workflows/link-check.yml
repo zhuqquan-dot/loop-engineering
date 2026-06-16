@@ -1,0 +1,31 @@
+name: markdown-link-check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Re-check every Monday so external links that rot are caught even without code changes.
+    - cron: '0 6 * * 1'
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run lychee link checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Only check repository-tracked Markdown files. Ignore vendor and archive directories.
+          args: >-
+            --no-progress
+            --max-concurrency 8
+            --accept 200,206,301,302,403,429
+            --exclude-mail
+            --exclude-path archive
+            --exclude-path node_modules
+            --verbose
+            './**/*.md'
+          fail: true

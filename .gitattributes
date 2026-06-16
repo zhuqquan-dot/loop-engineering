@@ -1,0 +1,26 @@
+# Force LF line endings everywhere so cross-platform clones do not break shell scripts.
+* text=auto eol=lf
+
+# Shell scripts must always be LF (Windows users running them via WSL/Git Bash).
+*.sh         text eol=lf
+*.bash       text eol=lf
+
+# PowerShell scripts may be either CRLF or LF; LF is fine on modern PowerShell.
+*.ps1        text eol=lf
+
+# Markdown / YAML / config — LF.
+*.md         text eol=lf
+*.yml        text eol=lf
+*.yaml       text eol=lf
+*.toml       text eol=lf
+*.json       text eol=lf
+
+# Binary files — never normalize.
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.gif        binary
+*.pdf        binary
+*.ico        binary
+*.zip        binary
+*.gz         binary
